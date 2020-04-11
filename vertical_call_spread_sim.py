@@ -1,8 +1,4 @@
 #!/bin/python3
-import numpy as np
-import math
-import random
-import sys
 import utils
 import verticals_utils
 	

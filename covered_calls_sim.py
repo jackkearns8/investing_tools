@@ -1,9 +1,7 @@
 #!/bin/python3
-import numpy as np
-import math
 import random
-import sys
 import utils
+import sys
 
 
 strikePrice = int(sys.argv[4]) #strike price

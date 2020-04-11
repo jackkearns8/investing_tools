@@ -1,13 +1,12 @@
 #!/bin/python3
 import numpy as np
 import math
-import random
 import sys
 	
 	
 MINUTES_IN_YEAR = 60*24*365
 numMinutes = int(sys.argv[1]) #num minutes to option expiration
-iv = int(sys.argv[2]) #implied volatility; i.e., the VIX in the case of SPY
+iv = int(sys.argv[2]) #implied volatility; e.g., the VIX in the case of SPY
 initialPrice = int(sys.argv[3]) #current underlying price
 	
 
