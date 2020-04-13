@@ -6,6 +6,7 @@ As of now, there are three scripts here.  One for modeling covered calls, and tw
 
 The aim of the covered call simulator is to model potential gains of writing covered calls vs a simple buy and hold strategy.  The verticals simulators model max profits and losses and the probabilities of wins and losses.
 
+
 ## Usage
 
 python covered_calls_sim.py [time to expiry in minutes] [implied volatility] [current underlying stock price] [strike price]
@@ -14,7 +15,8 @@ python vertical_put_spread_sim.py [time to expiry in minutes] [implied volatilit
 
 python vertical_call_spread_sim.py [time to expiry in minutes] [implied volatility] [current underlying stock price] [nearer ITM option price] [farther OTM option price] [nearer price premium] [further price premium]
 
-Note: For SPX, implied volatility is the current VIX price
+Note: Implied Vol is the implied volatility of the underlying.  For SPX, this is the VIX
+
 
 ## Known bugs and issues
 
