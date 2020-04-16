@@ -6,8 +6,8 @@ import sys
 	
 MINUTES_IN_YEAR = 60*24*365
 NUM_MINUTES = int(sys.argv[1]) #num minutes to option expiration
-IV = int(sys.argv[2]) #implied volatility of the underlying
-INITIAL_PRICE = int(sys.argv[3]) #current underlying price
+IV = float(sys.argv[2]) #implied volatility of the underlying
+INITIAL_PRICE = float(sys.argv[3]) #current underlying price
 	
 
 def generateNextPrice(currentPrice): 

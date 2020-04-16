@@ -2,7 +2,7 @@
 
 This is a series of python scripts I use when trading options to assess risk and chances of going in-the-money.
 
-As of now, there are three scripts here.  One for modeling covered calls, and two for vertical spreads.
+As of now, there are four scripts here.  One for modeling covered calls, two for vertical spreads, and one for calculating implied volatility.
 
 The aim of the covered call simulator is to model potential gains of writing covered calls vs a simple buy and hold strategy.  The verticals simulators model max profits and losses and the probabilities of wins and losses.
 
@@ -16,6 +16,8 @@ python vertical_put_spread_sim.py [time to expiry in minutes] [implied volatilit
 python vertical_call_spread_sim.py [time to expiry in minutes] [implied volatility] [current underlying stock price] [nearer ITM option price] [farther OTM option price] [nearer price premium] [further price premium]
 
 Note: Implied Vol is the implied volatility of the underlying.  For SPX, this is the VIX
+
+python python iv_calculator.py [underlying price] [strike price] [interest rate] [days to expiration] [option price] [is call option?]
 
 
 ## Known bugs and issues

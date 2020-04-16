@@ -5,7 +5,7 @@ import sys
 	
 
 def runSimulations():
-	strikePrice = int(sys.argv[4])
+	strikePrice = float(sys.argv[4])
 	numAssigned = 0 #number of times the underlying stock is assigned/called away
 	totalOpportunityCost = 0 #total amount of unrealized gains vs holding the underlying
 

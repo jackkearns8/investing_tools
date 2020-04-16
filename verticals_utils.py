@@ -4,8 +4,8 @@ import utils
 
 
 def runSimulations(isCallSpread):
-	CLOSER_STRIKE_PRICE = int(sys.argv[4]) #closer option strike price
-	FARTHER_STRIKE_PRICE = int(sys.argv[5]) #farther option strike price
+	CLOSER_STRIKE_PRICE = float(sys.argv[4]) #closer option strike price
+	FARTHER_STRIKE_PRICE = float(sys.argv[5]) #farther option strike price
 	CLOSER_STRIKE_PREMIUM = float(sys.argv[6]) #closer option strike option premium
 	FARTHER_STRIKE_PREMIUM = float(sys.argv[7]) #farther option strike option premium
 	
