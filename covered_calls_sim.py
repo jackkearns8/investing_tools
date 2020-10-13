@@ -19,14 +19,11 @@ def runSimulations():
   			if not strikePriceHit and currentPrice > strikePrice:
   				numAssigned += 1
 				strikePriceHit = True
-  				
-  			if strikePriceHit and currentPrice > strikePrice:
-  				#guess when the underlying stock will be assigned using a random number generator
-  				if random.randint(0, utils.numDays - minute) == 1:
-  					unrealizedGains = currentPrice - strikePrice
-  					totalOpportunityCost = totalOpportunityCost + unrealizedGains
-  					break
   					
+  		if currentPrice > strikePrice:
+  			unrealizedGains = currentPrice - strikePrice
+  			totalOpportunityCost = totalOpportunityCost + unrealizedGains
+  	
   	printResults(numAssigned, totalOpportunityCost)
   			
 
