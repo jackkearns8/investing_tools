@@ -11,9 +11,9 @@ def runSimulations():
 
 	# run a 1000 trial monte carlo simulation of underlying stock price movements over the specified number of minutes.
 	for i in range(1, 1000):
-		currentPrice = utils.INITIAL_PRICE
+		currentPrice = utils.initialPrice
 		strikePriceHit = False
-		for minute in range(0, utils.NUM_MINUTES):
+		for minute in range(0, utils.numDays):
 			currentPrice = utils.generateNextPrice(currentPrice)
   			
   			if not strikePriceHit and currentPrice > strikePrice:
@@ -22,7 +22,7 @@ def runSimulations():
   				
   			if strikePriceHit and currentPrice > strikePrice:
   				#guess when the underlying stock will be assigned using a random number generator
-  				if random.randint(0, utils.NUM_MINUTES - minute) == 1:
+  				if random.randint(0, utils.numDays - minute) == 1:
   					unrealizedGains = currentPrice - strikePrice
   					totalOpportunityCost = totalOpportunityCost + unrealizedGains
   					break

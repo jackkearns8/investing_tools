@@ -4,33 +4,33 @@ import utils
 
 
 def runSimulations(isCallSpread):
-	CLOSER_STRIKE_PRICE = float(sys.argv[4]) #closer option strike price
-	FARTHER_STRIKE_PRICE = float(sys.argv[5]) #farther option strike price
-	CLOSER_STRIKE_PREMIUM = float(sys.argv[6]) #closer option strike option premium
-	FARTHER_STRIKE_PREMIUM = float(sys.argv[7]) #farther option strike option premium
+	closerStrikePrice = float(sys.argv[4]) #closer option strike price
+	fartherStrikePrice = float(sys.argv[5]) #farther option strike price
+	closerStrikePremium = float(sys.argv[6]) #closer option strike option premium
+	fartherStrikePremium = float(sys.argv[7]) #farther option strike option premium
 	
 	numCloserHit = 0 #number of times the closer bound option is hit
 	numFartherHit = 0 #number of times the farther bound option is hit
 	numBreakEvenHit = 0 #number of times the break even price is hit
 	
-	premiumDiff = CLOSER_STRIKE_PREMIUM - FARTHER_STRIKE_PREMIUM
-	breakEven = CLOSER_STRIKE_PRICE + premiumDiff 
+	premiumDiff = closerStrikePremium - fartherStrikePremium
+	breakEven = closerStrikePrice + premiumDiff 
 
 	# run a 1000 trial monte carlo simulation of the underlying stock price movements over the specified number of minutes.
 	for i in range(1, 1000):
-		currentPrice = utils.INITIAL_PRICE
+		currentPrice = utils.initialPrice
 		closerStrikePriceHit = False
 		fartherStrikePriceHit = False
 		breakEvenHit = False
-		for minute in range(0, utils.NUM_MINUTES):
+		for minute in range(0, utils.numDays):
 			currentPrice = utils.generateNextPrice(currentPrice)
   			
   			if isCallSpread: 
-  				if not closerStrikePriceHit and currentPrice > CLOSER_STRIKE_PRICE:
+  				if not closerStrikePriceHit and currentPrice > closerStrikePrice:
   					numCloserHit = numCloserHit + 1
   					closerStrikePriceHit = True
   				
-  				if not fartherStrikePriceHit and currentPrice > FARTHER_STRIKE_PRICE:
+  				if not fartherStrikePriceHit and currentPrice > fartherStrikePrice:
   					numFartherHit = numFartherHit + 1
   					fartherStrikePriceHit = True
   				
@@ -40,11 +40,11 @@ def runSimulations(isCallSpread):
   			
   			#else must be a put spread
   			else:
-  				if not closerStrikePriceHit and currentPrice < CLOSER_STRIKE_PRICE:
+  				if not closerStrikePriceHit and currentPrice < closerStrikePrice:
   					numCloserHit = numCloserHit + 1
   					closerStrikePriceHit = True
   				
-  				if not fartherStrikePriceHit and currentPrice < FARTHER_STRIKE_PRICE:
+  				if not fartherStrikePriceHit and currentPrice < fartherStrikePrice:
   					numFartherHit = numFartherHit + 1
   					fartherStrikePriceHit = True
   				
@@ -53,7 +53,7 @@ def runSimulations(isCallSpread):
   					breakEvenHit = True
   	
   	maxProfit = premiumDiff * 100
-  	maxLoss = (FARTHER_STRIKE_PRICE - CLOSER_STRIKE_PRICE - premiumDiff) * 100
+  	maxLoss = (fartherStrikePrice - closerStrikePrice - premiumDiff) * 100
   	printResults(maxProfit, breakEven, maxLoss, numCloserHit, numFartherHit, numBreakEvenHit)
 	
 	
